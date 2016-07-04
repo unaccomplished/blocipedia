@@ -17,8 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-# gem 'bootstrap'
-# can't use 'bootstrap' and 'bootstrap-sass' gems at the same time
+gem 'bootstrap-sass'
 gem 'figaro'
 gem 'pry'
 
@@ -32,4 +31,3 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
-gem 'bootstrap-sass'
