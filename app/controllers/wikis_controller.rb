@@ -33,6 +33,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = wiki_params[:title]
     @wiki.body = wiki_params[:body]
+    authorize @wiki
 
     if @wiki.save
       flash[:notice] = "Wiki was updated successfully."
