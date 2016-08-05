@@ -35,7 +35,7 @@ class WikisController < ApplicationController
     @wiki.body = wiki_params[:body]
     authorize @wiki
 
-    if @wiki.save
+    if @wiki.update(wiki_params)
       flash[:notice] = "Wiki was updated successfully."
       redirect_to @wiki
     else
