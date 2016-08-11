@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user)
   end
 
   def show
@@ -15,8 +15,10 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = wiki_params[:title]
     @wiki.body = wiki_params[:body]
+    @wiki.private = wiki_params[:private]
+    @wiki.user = current_user
 
-    if @wiki.save
+    if @wiki.save(wiki_params)
       flash[:notice] = "Wiki was saved successfully."
       redirect_to @wiki
     else
@@ -33,6 +35,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = wiki_params[:title]
     @wiki.body = wiki_params[:body]
+    @wiki.private = wiki_params[:private]
     authorize @wiki
 
     if @wiki.update(wiki_params)
@@ -59,6 +62,6 @@ class WikisController < ApplicationController
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body)
+    params.require(:wiki).permit(:title, :body, :private, :user_id)
   end
 end
