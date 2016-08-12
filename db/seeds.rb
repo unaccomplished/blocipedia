@@ -35,7 +35,7 @@ premium = User.create!(
 )
 users = User.all
 
-15.times do
+10.times do
   Wiki.create!(
     title: Faker::Lorem.characters(10),
     body:  Faker::Lorem.paragraph,
@@ -43,6 +43,30 @@ users = User.all
     user: users.sample
   )
 end
+
+Wiki.create!(
+  title: 'My Very First Markdown Wiki',
+  body:
+  %Q{### There Is Something You Should Know!
+
+  This is my very first post using markdown!
+
+  How do you like it?  I learend this from [RichOnRails.com](http://richonrails.com/articles/rendering-markdown-with-redcarpet)!},
+  user: users.sample
+)
+
+Wiki.create!(
+  title: 'My Second Markdown Wiki',
+  body:
+  %Q{### My List of Things To Do!
+
+  Here is the list of things I wish to do!
+
+  * write more wikis
+  * write even more wikis
+  * write even more wikis!},
+  user: users.sample
+)
 
 5.times do
   Wiki.create!(
