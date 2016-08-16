@@ -2,3 +2,8 @@
 <div class="col-md-8">
     <%= render partial: 'form' %>
 </div>
+<% if @wiki.user_id = current_user.id || current_user.admin? %>
+  <div class="col-md-8">
+      <%= render partial: 'collaborators/form' %>
+  </div>
+<% end %>

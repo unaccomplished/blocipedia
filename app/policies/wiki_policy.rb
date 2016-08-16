@@ -10,7 +10,7 @@ class WikiPolicy < ApplicationPolicy
       user.present?
     end
 
-    def Scope
+    class Scope < Scope
       attr_reader :user, :scope
 
       def initialize(user, scope)

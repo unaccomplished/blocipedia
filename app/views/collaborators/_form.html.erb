@@ -1,0 +1,18 @@
+<h3>Add Collaborators to <%= @wiki.title %> Wiki (showing all users)</h3>
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Give Access</th>
+    </tr>
+    <% @user = User.all %>
+    <% @user.each do |user| %>
+    <tr>
+      <td>
+        <%= user.email %>
+      </td>
+      <td>
+        Checkbox goes here
+      </td>
+    </tr>
+    <% end %>
+  </table>
