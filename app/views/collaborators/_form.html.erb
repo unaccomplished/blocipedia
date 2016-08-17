@@ -11,7 +11,11 @@
         <%= user.email %>
       </td>
       <td>
-        Checkbox goes here
+        <% #if !@wiki.collaborator?(user) %>
+          <%= link_to "Remove as collaborator", wiki_collaborator_path(@wiki, user_id: user.id), method: :delete, class: 'btn btn-danger' %>
+        <% #else %>
+          <%= link_to "Add as collaborator", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-success' %>
+        <% #end %>
       </td>
     </tr>
     <% end %>
