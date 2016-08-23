@@ -14,7 +14,7 @@ class CollaboratorsController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:wiki_id])
-    @collaborator = @wiki.collaborators.find(user_id: params[:user_id])
+    @collaborator = @wiki.collaborators.find(params[:id])
 
     if @collaborator.destroy
       flash[:notice] = "Collaborator was removed successfully."
