@@ -2,7 +2,7 @@
 <div class="col-md-8">
     <%= render partial: 'form' %>
 </div>
-<% if @wiki.private? && ( user_id = current_user.id || current_user.admin? ) %>
+<% if @wiki.private? && ( @wiki.user_id == current_user.id || current_user.admin? ) %>
   <div class="col-md-8">
       <%= render partial: 'collaborators/form' %>
   </div>

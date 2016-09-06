@@ -35,7 +35,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = wiki_params[:title]
     @wiki.body = wiki_params[:body]
-    @wiki.private = wiki_params[:private]
+    @wiki.private = wiki_params[:private] #|| true # true for standard user/collaborator updating wiki
     authorize @wiki
 
     if @wiki.update(wiki_params)
