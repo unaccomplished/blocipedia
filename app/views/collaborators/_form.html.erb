@@ -1,0 +1,22 @@
+<h3>Add Collaborators to <%= @wiki.title %> Wiki (showing all users)</h3>
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Give Access</th>
+    </tr>
+    <% @user = User.all %>
+    <% @user.each do |user| %>
+    <tr>
+      <td>
+        <%= user.email %>
+      </td>
+      <td>
+        <% if @wiki.collaborator?(user) %>
+          <%= link_to "Remove as collaborator", wiki_collaborator_path(@wiki, id: @wiki.collaborator?(user)), method: :delete, data: {:confirm => 'Are you sure?'}, class: 'btn btn-danger' %>
+        <% else %>
+          <%= link_to "Add as collaborator", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-success' %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
