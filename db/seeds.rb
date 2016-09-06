@@ -14,13 +14,6 @@ require 'faker'
   )
 end
 
-20.times do
-  Wiki.create!(
-    title: Faker::Lorem.characters(10),
-    body:  Faker::Lorem.paragraph
-  )
-end
-
 # Create an admin
 admin = User.create!(
   email: 'hsu.joce@gmail.com',
@@ -40,6 +33,25 @@ premium = User.create!(
   password: 'password',
   role: 'premium'
 )
+users = User.all
+
+15.times do
+  Wiki.create!(
+    title: Faker::Lorem.characters(10),
+    body:  Faker::Lorem.paragraph,
+    private: false,
+    user: users.sample
+  )
+end
+
+5.times do
+  Wiki.create!(
+    title: Faker::Lorem.characters(10),
+    body: Faker::Lorem.paragraph,
+    private: true,
+    user: premium
+  )
+end
 
 puts "Seed finished"
 puts "#{User.count} users created"

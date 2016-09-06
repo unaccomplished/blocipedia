@@ -44,8 +44,8 @@
 
 <% if current_user.premium? %>
   <h3>Downgrade my account</h3>
-  <p>You currently have a premium account which allows you to create private wikis.  Want to downgrade to a standard account?
-  <br><%= link_to "Downgrade my account", downgrade_path, class: 'btn btn-danger', data: { confirm: "Are you sure you want to downgrade your account?" } %></p>
+  <p>You currently have a premium account which allows you to create private wikis.  Please note that downgrading your account will set your private wikis to public.  Want to downgrade to a standard account?
+  <br><%= link_to "Downgrade my account", downgrade_path, class: 'btn btn-danger', data: { confirm: "Are you sure you want to downgrade you account?  Your private wikis will be set to public."} %></p>
 <% end %>
 
 <h3>Cancel my account</h3>
